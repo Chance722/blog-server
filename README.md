@@ -1,5 +1,5 @@
 [koa]: https://koajs.com
-[koa-image]: https://img.shields.io/badge/Powered%20By-koa-33333d.svg?style=flat-square
+[koa-image]: https://img.shields.io/badge/Powered%20By-Koa-df0541.svg?style=flat-square
 [blog-front]: https://github.com/Chance722/blog-front
 [blog-admin]: https://github.com/Chance722/blog-admin
 
