@@ -2,7 +2,7 @@ import { BaseContext } from 'koa'
 
 export default async (ctx: BaseContext, next: () => Promise<any>) => {
   // 拦截器
-  const allowedOrigins = ['https://jkchao.cn', 'https://admin.jkchao.cn', 'file://']
+  const allowedOrigins = ['https://chance722.me', 'https://admin.chance722.me', 'file://']
   const origin = ctx.request.headers.origin || ''
   if (allowedOrigins.includes(origin) || origin.includes('localhost') || origin.includes('127.0.0.1')) {
     ctx.set('Access-Control-Allow-Origin', origin)
@@ -25,7 +25,7 @@ export default async (ctx: BaseContext, next: () => Promise<any>) => {
   if (Object.is(process.env.NODE_ENV, 'production')) {
     const { referer, origin } = ctx.request.headers
     if (origin !== 'file://') {
-      const isVerifyed = (!origin || origin.includes('jkchao.cn')) && (!referer || referer.includes('jkchao.cn'))
+      const isVerifyed = (!origin || origin.includes('chance722.me')) && (!referer || referer.includes('chance722.me'))
       if (!isVerifyed) {
         ctx.throw(403, { code: 0, message: '身份验证失败' })
         return false
