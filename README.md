@@ -14,7 +14,7 @@
 RESTful API server application for my personal blog
 
 * Web client for user: [blog-front]([blog-front]) powered by [Nuxt.js@2](https://github.com/nuxt/nuxt.js)
-* Web client for admin [blog-admin]([blog-admin]) powered by Vue and element-ui
+* Web client for admin [blog-admin](https://github.com/Chance722/blog-admin) powered by Vue and element-ui
 * Web client for server powered by koa and typescript
 
 ## Quick Start
