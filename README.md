@@ -1,7 +1,5 @@
 [koa]: https://koajs.com
 [koa-image]: https://img.shields.io/badge/Powered%20By-Koa-df0541.svg?style=flat-square
-[blog-front]: https://github.com/Chance722/blog-front
-[blog-admin]: https://github.com/Chance722/blog-admin
 
 # blog-server
 
@@ -13,8 +11,8 @@
 
 RESTful API server application for my personal blog
 
-* Web client for user: [blog-front]([blog-front]) powered by [Nuxt.js@2](https://github.com/nuxt/nuxt.js)
-* Web client for admin [blog-admin]([blog-admin]) powered by Vue and element-ui
+* Web client for user: [blog-front](https://github.com/Chance722/blog-front) powered by [Nuxt.js@2](https://github.com/nuxt/nuxt.js)
+* Web client for admin [blog-admin](https://github.com/Chance722/blog-admin) powered by Vue and element-ui
 * Web client for server powered by koa and typescript
 
 ## Quick Start
