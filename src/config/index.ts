@@ -23,8 +23,8 @@ const CONFIG = {
   MUSIC_LIST_ID: '371766297',
   // 七牛配置
   QINIU: {
-    accessKey: 'uGfIINWyiSdl1ED8gCNMQ9bLz0XfP0iTs0RibVqH',
-    secretKey: 'm-2ZG9dbC-t1r2vTZ5cXEoxtnJKi4ciWFXzj2oun',
+    accessKey: 'YOUR_ACCESS_KEY',
+    secretKey: 'YOUR_SECRET_KEY',
     bucket: 'blogimage',
     origin: 'http://blogimage.u.clouddn.com',
     uploadURL: 'http://up.clouddn.com/'
