@@ -38,14 +38,21 @@ export default class AdminController {
    * @param {string} name
    * @param {string} nickname
    * @param {string} signature
-   * @param {string} new_pwd
-   * @param {string} old_pwd
-   * @param {string} confirm_pwd
    * @param {string} avator
    * @return null
    */
   public static saveUserInfo (ctx) {
     return adminService.saveUserInfo(ctx)
+  }
+
+  /**
+   * @param {string} new_pwd
+   * @param {string} old_pwd
+   * @param {string} confirm_pwd
+   * @return null
+   */
+  public static saveUserPwd (ctx) {
+    return adminService.saveUserPwd(ctx)
   }
 
   /**

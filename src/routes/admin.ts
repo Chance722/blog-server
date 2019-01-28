@@ -6,6 +6,7 @@ router.post('/login', adminController.login)
 router.get('/regist', adminController.regist)
 router.post('/saveBaseInfo', adminController.saveBaseInfo)
 router.post('/saveUserInfo', adminController.saveUserInfo)
+router.post('/saveUserPwd', adminController.saveUserPwd)
 router.get('/getSettingInfo', adminController.getSettingInfo)
 
 export default router

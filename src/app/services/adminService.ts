@@ -102,7 +102,38 @@ export default class AdminService {
 
   public static async saveUserInfo (ctx) {
     const token = ctx.header.authorization
-    const { new_pwd, old_pwd, pwd, name, nickname, signature, avator } = ctx.request.body
+    const { name, nickname, signature, avator } = ctx.request.body
+
+    const admin = await adminModel.findOne({
+      where: {
+        token
+      }
+    })
+    if (!admin) {
+      ctx.fail(401)
+      return
+    }
+
+    const result = await adminModel.update({
+      name,
+      nickname,
+      signature,
+      avator
+    }, {
+        where: {
+          id: admin.id
+        }
+      }).catch(err => {
+        ctx.throw(500)
+      })
+    if (result) ctx.success({ id: admin.id, token, name, avator }, '保存成功')
+    else ctx.fail('保存失败')
+
+  }
+
+  public static async saveUserPwd (ctx) {
+    const token = ctx.header.authorization
+    const { new_pwd, old_pwd, pwd } = ctx.request.body
     if (dataHelpler.isEmpty(new_pwd, old_pwd, pwd)) {
       ctx.fail(422, '密码不能为空')
       return
@@ -120,13 +151,8 @@ export default class AdminService {
       ctx.fail(401)
       return
     }
-
     const result = await adminModel.update({
-      name,
-      nickname,
-      signature,
-      pwd: md5Decode(ctx.request.body.pwd),
-      avator
+      pwd: md5Decode(ctx.request.body.pwd)
     }, {
         where: {
           id: admin.id
@@ -134,9 +160,8 @@ export default class AdminService {
       }).catch(err => {
         ctx.throw(500)
       })
-    if (result) ctx.success({ id: admin.id, token, name, avator }, '保存成功')
+    if (result) ctx.success('保存成功')
     else ctx.fail('保存失败')
-
   }
 
   public static async getSettingInfo (ctx) {
