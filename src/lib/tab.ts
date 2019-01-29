@@ -121,9 +121,10 @@ const album =
 const statistics =
   `create table if not exists statistics(
     id INT NOT NULL AUTO_INCREMENT,
-    type VARCHAR(60) NOT NULL,
-    nums TINYINT NOT NULL DEFAULT 1,
-    type_desc VARCHAR(60),
+    name VARCHAR(60) NOT NULL,
+    description VARCHAR(200) NOT NULL,
+    user_id INT,
+    content TEXT,
     create_time TIMESTAMP,
     PRIMARY KEY ( id )
  ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;`

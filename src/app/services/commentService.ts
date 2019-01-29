@@ -5,6 +5,8 @@ import * as geoip from 'geoip-lite'
 import { Op } from 'sequelize'
 import Pagination from '../utils/pagination'
 import userService from './userService'
+import statisticsService from './statisticsService'
+import CONFIG from '../../config'
 
 commentModel.belongsTo(userModel, {
   as: 'user',
@@ -38,6 +40,12 @@ export default class CommentService {
     // 由name和email确定user的唯一性 如果找不到user则新增
     if (!user) {
       user = await userService.addUser({ name: author_name, email: author_email, ip, homepage })
+
+      // 新增统计项
+      statisticsService.record({
+        type: 'NEW_USER',
+        user_id: user.id
+      })
     }
 
     const result = await commentModel.create({
@@ -51,6 +59,13 @@ export default class CommentService {
       region: ip_location && ip_location.region,
       country: ip_location && ip_location.country,
       create_time: new Date().getTime()
+    })
+
+    // 新增统计项
+    statisticsService.record({
+      type: 'NEW_COMMENTS',
+      user_id: user.id,
+      content
     })
 
     if (result) ctx.success('发布成功')
@@ -127,7 +142,7 @@ export default class CommentService {
       ctx.fail(422, '参数不能为空')
       return
     }
-    // TODO 需要根据token检测对应的user是否为管理员 只有管理员有权限进行setState操作
+    // TODO: 需要根据token检测对应的user是否为管理员 只有管理员有权限进行setState操作
     const result = commentModel.update({
       state
     }, {

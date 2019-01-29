@@ -10,14 +10,42 @@ const CONFIG = {
   },
   // 统计类型
   STAT_TYPE: {
-    USER: 'user',
-    COMMENTS: 'comments',
-    VIEWS: 'views',
-    ARTICLE: 'article',
-    LIKES: 'likes',
-    TAG: 'tag',
-    CATEGORY: 'category',
-    KEYWORDS: 'keywords'
+    NEW_VISITOR: {
+      NAME: 'NEW_VISITOR',
+      DESC: '新增访问数'
+    },
+    NEW_USER: {
+      NAME: 'NEW_USER',
+      DESC: '新增用户数'
+    },
+    NEW_COMMENTS: {
+      NAME: 'NEW_COMMENTS',
+      DESC: '新增留言数'
+    },
+    NEW_ARTICLE_COMMENTS: {
+      NAME: 'NEW_ARTICLE_COMMENTS',
+      DESC: '新增文章评论数'
+    },
+    NEW_VIEWS: {
+      NAME: 'NEW_VIEWS',
+      DESC: '新增阅读数'
+    },
+    NEW_LIKES: {
+      NAME: 'NEW_LIKES',
+      DESC: '新增点赞数'
+    },
+    TAG: {
+      NAME: 'SEARCH_BY_TAG',
+      DESC: '通过标签检索文章的次数统计'
+    },
+    CATEGORY: {
+      NAME: 'SEARCH_BY_CATEGORY',
+      DESC: '通过分类检索文章的次数统计'
+    },
+    KEYWORDS: {
+      NAME: 'SEARCH_BY_KEYWORDS',
+      DESC: '通过关键字检索文章的次数统计'
+    }
   },
   // 我的网易云歌单ID
   MUSIC_LIST_ID: '371766297',

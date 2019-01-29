@@ -10,5 +10,9 @@ export default class StatisticsController {
   public static getDataByDate (ctx) {
     return statisticsService.getDataByDate(ctx)
   }
+
+  public static newVisit (ctx) {
+    return statisticsService.newVisit(ctx)
+  }
 }
 

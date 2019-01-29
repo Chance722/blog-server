@@ -53,6 +53,7 @@ export default class ArticleService {
     else ctx.fail('保存失败')
   }
 
+  // TODO: 根据搜索类型 添加相应的统计类型 ( TAG, CATEGORY, KEYWORDS )
   public static async listArticles (ctx) {
     const { tags, category, open, status, blog_title, pageIndex, pageSize } = ctx.request.body
     let condition = {
@@ -183,30 +184,38 @@ export default class ArticleService {
       return
     }
     const data = await articleModel.findOne({ where: { id } }).catch(err => ctx.thorw(500))
+    // TODO: 根据getArticle的来源 判断是否添加 NEW_VIEWS 统计
     if (data) ctx.success(data, '操作成功')
     else ctx.fail('请求失败')
   }
 
   public static async setState (ctx) {
-    const { type, id } = ctx.request.body
+    const { type, id, user_id } = ctx.request.body
     const operationType = CONFIG.OPERATION_TYPE[type]
     const article = await articleModel.findOne({
       where: { id }
     })
     if (article) {
-      statisticsService.record({
-        type: operationType,
-        type_desc: id
-      })
       let params = null
+      let record_params = null
       if (operationType === 'likes') {
         params = { likes: Number(article.likes) + 1 }
+        record_params = { type: 'NEW_LIKES' }
       } else if (operationType === 'comments') {
         params = { comments: Number(article.comments) + 1 }
+        record_params = { type: 'NEW_ARTICLE_COMMENTS' }
       } else if (operationType === 'views') {
         params = { views: Number(article.views) + 1 }
+        record_params = { type: 'NEW_VIEWS' }
       }
       const res = await articleModel.update(params, { where: { id } }).catch(err => ctx.throw(500))
+
+      // 新增统计项
+      if (user_id) record_params = Object.assign(record_params, { user_id })
+      statisticsService.record({
+        record_params
+      })
+
       if (res) ctx.success('操作成功')
       else ctx.fail('操作失败')
     }
