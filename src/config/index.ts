@@ -8,6 +8,40 @@ const CONFIG = {
     2: 'comments',
     3: 'views'
   },
+  DATE_TYPE: {
+    1: 'RECENT_WEEK',
+    2: 'RECENT_MONTH',
+    3: 'RECENT_THREE_MONTH',
+    4: 'RECENT_HALF_YEAR',
+    5: 'RECENT_YEAR'
+  },
+  DATE_STAT_SETTING: {
+    'RECENT_WEEK': {
+      prevDays: 6,
+      splitNums: 1,
+      value: 1
+    },
+    'RECENT_MONTH': {
+      prevDays: 29,
+      splitNums: 5,
+      value: 2
+    },
+    'RECENT_THREE_MONTH': {
+      prevDays: 89,
+      splitNums: 15,
+      value: 3
+    },
+    'RECENT_HALF_YEAR': {
+      prevDays: 179,
+      splitNums: 30,
+      value: 4
+    },
+    'RECENT_YEAR': {
+      prevDays: 364,
+      splitNums: 60,
+      value: 5
+    }
+  },
   // 统计类型
   STAT_TYPE: {
     NEW_VISITOR: {
