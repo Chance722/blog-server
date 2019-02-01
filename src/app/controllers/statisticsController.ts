@@ -13,5 +13,9 @@ export default class StatisticsController {
   public static newVisit (ctx) {
     return statisticsService.newVisit(ctx)
   }
+
+  public static getTotalData (ctx) {
+    return statisticsService.getTotalData(ctx)
+  }
 }
 

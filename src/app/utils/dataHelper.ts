@@ -26,6 +26,22 @@ export default class DataHelper {
     const extraStr = isShort ? '' : ` ${hour}:${min}:${sec}`
     return `${year}-${month}-${day}${extraStr}`
   }
+  public static formatDate2 (date) {
+    const year = date.getFullYear()
+    const month = `${new Array(2).join('0')}${Number(date.getMonth()) + 1}`.slice(-2)
+    const day = `${new Array(2).join('0')}${date.getDate()}`.slice(-2)
+    const hour = `${new Array(2).join('0')}${date.getHours()}`.slice(-2)
+    const min = `${new Array(2).join('0')}${date.getMinutes()}`.slice(-2)
+    const sec = `${new Array(2).join('0')}${date.getSeconds()}`.slice(-2)
+    return {
+      year,
+      month,
+      day,
+      hour,
+      min,
+      sec
+    }
+  }
   public static isSensitive (values) {
     const sensitiveWords = ['草你妈', '你妈逼']
     for (const word of sensitiveWords) {

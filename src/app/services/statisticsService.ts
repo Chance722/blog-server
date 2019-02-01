@@ -1,4 +1,6 @@
 import statisticsModel from '../models/statistics'
+import userModel from '../models/user'
+import commentModel from '../models/comment'
 import CONFIG from '../../config'
 import dataHelper from '../utils/dataHelper'
 import { Op } from 'sequelize'
@@ -49,21 +51,40 @@ export default class StatisticsService {
         return createTime >= beginStamp && createTime < endStamp
       }) : []
 
-      if (i <= dates.length && type !== 1) {
-        filterList.push({
-          date: `${dates[i]}~${dates[i + 1]}`,
-          list: childList
-        })
-      } else {
-        filterList.push({
-          date: dates[i],
-          list: childList
-        })
-      }
+      const startDate = `${dates[i]}`
+      const endDate = i === dates.length - 1 ? '' : `~${dates[i + 1]}`
+      const dateKey = (i <= dates.length && type !== 1) ? `${startDate}${endDate}` : startDate
+
+      filterList.push({
+        date: dateKey,
+        list: childList
+      })
     }
 
     if (filterList) ctx.success(filterList, '获取成功')
     else ctx.fail('获取失败')
+  }
+
+  public static async getTotalData (ctx) {
+    const user = userModel.count()
+    const vistor = statisticsModel.count({
+      where: {
+        name: 'NEW_VISITOR'
+      }
+    })
+    const comments = commentModel.count({
+      where: {
+        post_id: 0
+      }
+    })
+    const articleComments = commentModel.count({
+      where: {
+        post_id: {
+          [Op.not]: 0
+        }
+      }
+    })
+    const result = await Promise.all([user, vistor])
   }
 
   public static getDateStamps (type) {
