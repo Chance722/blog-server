@@ -67,16 +67,19 @@ export default class StatisticsService {
 
   public static async getTotalData (ctx) {
     const user = userModel.count()
+    // 总访客数
     const vistor = statisticsModel.count({
       where: {
         name: 'NEW_VISITOR'
       }
     })
+    // 总留言数
     const comments = commentModel.count({
       where: {
         post_id: 0
       }
     })
+    // 总评论数
     const articleComments = commentModel.count({
       where: {
         post_id: {
@@ -84,7 +87,13 @@ export default class StatisticsService {
         }
       }
     })
-    const result = await Promise.all([user, vistor])
+    // 总阅读数
+    const views = statisticsModel.count({
+      where: {
+        name: 'NEW_VIEWS'
+      }
+    })
+    const result = await Promise.all([user, vistor, comments, articleComments, views])
   }
 
   public static getDateStamps (type) {
