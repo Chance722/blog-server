@@ -4,10 +4,10 @@
   "description": "blog server base on koa2+typescript",
   "main": "index.js",
   "scripts": {
-    "dev": "nodemon --watch './src/**/*' -e ts,tsx --exec 'ts-node' ./src/app.ts",
+    "dev": "nodemon --watch ./src/**/* -e ts,tsx --exec ts-node ./src/app.ts",
     "start": "set NODE_ENV=production&&pm2 start ./dist/app.js",
     "tslint": "tslint -c tslint.json -p tsconfig.json",
-    "mysql": "ts-node ./src/lib/init.ts",
+    "mysql": "ts-node ./src/db/index.ts",
     "build-ts": "tsc",
     "build": "npm run tslint && npm run build-ts"
   },

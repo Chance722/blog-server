@@ -1,0 +1,20 @@
+create table if not exists admin(
+   id INT NOT NULL AUTO_INCREMENT,
+   name VARCHAR(60) NOT NULL comment '用户名',
+   pwd VARCHAR(100) NOT NULL comment '密码',
+   avatar VARCHAR(60) comment '头像',
+   token VARCHAR(200) comment '凭证',
+   signature VARCHAR(200) comment '签名',
+   hobies VARCHAR(200) comment '爱好',
+   skills VARCHAR(200) comment '技能',
+   address VARCHAR(100) comment '地址',
+   self_description VARCHAR(200) comment '用户描述',
+   blog_title VARCHAR(60) comment '站点标题',
+   blog_keywords VARCHAR(100) comment '站点关键字',
+   blog_description VARCHAR(200) comment '站点描述',
+   email VARCHAR(60) comment '邮箱',
+   icp_numbers VARCHAR(60) comment '备案号',
+   reg_time TIMESTAMP comment '注册时间',
+   last_login_time TIMESTAMP comment '最后登录时间',
+   PRIMARY KEY ( id )
+  ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;

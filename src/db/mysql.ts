@@ -32,7 +32,12 @@ const createTable = sql => {
   return query(sql, [])
 }
 
-export default {
+module.exports = {
   createTable,
   query
 }
+
+// export default {
+//   createTable,
+//   query
+// }

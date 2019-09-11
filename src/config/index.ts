@@ -68,25 +68,15 @@ const CONFIG = {
       NAME: 'NEW_LIKES',
       DESC: '新增点赞数'
     },
-    TAG: {
-      NAME: 'SEARCH_BY_TAG',
-      DESC: '通过标签检索文章的次数统计'
-    },
-    CATEGORY: {
-      NAME: 'SEARCH_BY_CATEGORY',
-      DESC: '通过分类检索文章的次数统计'
-    },
-    KEYWORDS: {
-      NAME: 'SEARCH_BY_KEYWORDS',
-      DESC: '通过关键字检索文章的次数统计'
-    }
   },
   // 我的网易云歌单ID
   MUSIC_LIST_ID: '371766297',
   // 七牛配置
   QINIU: {
-    accessKey: 'YOUR_ACCESS_KEY',
-    secretKey: 'YOUR_SECRET_KEY',
+    // accessKey: 'YOUR_ACCESS_KEY',
+    // secretKey: 'YOUR_SECRET_KEY',
+    accessKey: 'uGfIINWyiSdl1ED8gCNMQ9bLz0XfP0iTs0RibVqH',
+    secretKey: 'm-2ZG9dbC-t1r2vTZ5cXEoxtnJKi4ciWFXzj2oun',
     bucket: 'blogimage',
     origin: 'http://blogimage.u.clouddn.com',
     uploadURL: 'http://up.clouddn.com/'
@@ -110,7 +100,7 @@ const CONFIG = {
   },
   // 数据库配置
   MYSQL: {
-    DATABASE: 'blogsql',
+    DATABASE: 'chance722sql',
     USERNAME: 'root',
     PASSWORD: '123456',
     PORT: '3306',
