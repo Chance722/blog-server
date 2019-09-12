@@ -1,6 +1,6 @@
 import * as Router from 'koa-router'
-import CONFIG from '../config'
-// import admin from './admin'
+import config from '../config'
+import admin from './admin'
 // import tag from './tag'
 // import category from './category'
 // import qiniu from './qiniu'
@@ -11,10 +11,10 @@ import CONFIG from '../config'
 // import statistics from './statistics'
 // import user from './user'
 const router = new Router({
-  prefix: CONFIG.APP.ROOT_PATH
+  prefix: config.APP.ROOT_PATH
 })
 
-// router.use('/admin', admin.routes(), admin.allowedMethods())
+router.use('/admin', admin.routes(), admin.allowedMethods())
 // router.use('/tag', tag.routes(), tag.allowedMethods())
 // router.use('/category', category.routes(), category.allowedMethods())
 // router.use('/article', article.routes(), article.allowedMethods())

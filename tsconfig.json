@@ -17,10 +17,8 @@
       "node"
     ],
     "outDir": "dist", // 编译输出文件目录，默认等于rootDir
-    "rootDir": "src" // 源代码目录在这个目录里编写你的ts文件
+    "rootDir": "src", // 源代码目录在这个目录里编写你的ts文件
+    "emitDecoratorMetadata": true,
+    "experimentalDecorators": true,
   },
-  "exclude": [
-    "node_modules", // 忽略目录
-    "**/*.test.ts" // 忽略指定类型文件
-  ]
 }

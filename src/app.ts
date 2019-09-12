@@ -5,15 +5,15 @@ import * as json from 'koa-json'
 import * as bodyparser from 'koa-bodyparser'
 import * as logger from 'koa-logger'
 import * as cors from 'koa2-cors'
-import CONFIG from './config'
+import * as jwt from 'koa-jwt'
+import config from './config'
 import routes from './routes'
 import interceptor from './middlewares/interceptor'
 import responseMiddleWare from './middlewares/response'
 import errorMiddleWare from './middlewares/error'
 
-import * as jwt from 'koa-jwt'
-// const jwt = require('koa-jwt')
-const secret = CONFIG.TOKEN_SECRET
+
+const secret = config.TOKEN_SECRET
 
 const app = new Koa()
 
@@ -30,7 +30,7 @@ app.use(require('koa-static')(__dirname + '/public'))
 app.use(cors())
 
 // logger
-app.use(async (ctx, next) => {
+app.use(async (ctx: Koa.Context, next: Function) => {
   const start: number = + new Date()
   await next()
   const ms = + new Date() - start
@@ -56,7 +56,7 @@ app.on('error', (err, ctx) => {
   console.error('server error', err, ctx)
 })
 
-http.createServer(app.callback()).listen(CONFIG.APP.PORT, () => {
-  console.log(`node-Koa Run! port at ${CONFIG.APP.PORT}`)
+http.createServer(app.callback()).listen(config.APP.PORT, () => {
+  console.log(`node-Koa Run! port at ${config.APP.PORT}`)
 })
 

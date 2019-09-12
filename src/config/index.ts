@@ -1,7 +1,7 @@
 /**
  * 配置文件
  */
-const CONFIG = {
+const config = {
   // 操作类型
   OPERATION_TYPE: {
     1: 'likes',
@@ -103,9 +103,9 @@ const CONFIG = {
     DATABASE: 'chance722sql',
     USERNAME: 'root',
     PASSWORD: '123456',
-    PORT: '3306',
+    PORT: 3306,
     HOST: 'localhost'
   }
 }
 
-export default CONFIG
+export default config

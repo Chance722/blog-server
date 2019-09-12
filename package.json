@@ -34,16 +34,18 @@
     "qiniu": "^7.1.3",
     "qn": "^1.3.0",
     "querystring": "^0.2.0",
+    "reflect-metadata": "^0.1.13",
     "request": "^2.83.0",
     "sequelize": "^4.34.0",
     "simple-netease-cloud-music": "^0.4.0",
-    "tslib": "^1.9.3"
+    "tslib": "^1.9.3",
+    "typeorm": "^0.2.18"
   },
   "devDependencies": {
     "@types/jsonwebtoken": "^7.2.6",
-    "@types/node": "^10.12.12",
     "@types/koa": "^2.0.47",
     "@types/koa-router": "^7.0.35",
+    "@types/node": "^10.12.12",
     "nodemon": "^1.18.7",
     "ts-node": "^7.0.1",
     "typescript": "^3.2.1"
