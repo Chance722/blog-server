@@ -34,6 +34,14 @@ export class Admin {
       type: 'varchar',
       length: 200,
       nullable: true,
+      comment: '凭证',
+    })
+    token: string
+
+    @Column({
+      type: 'varchar',
+      length: 200,
+      nullable: true,
       comment: '签名',
     })
     signature: string
@@ -111,16 +119,17 @@ export class Admin {
     icp_numbers: string
 
     @Column({
-      type: 'timestamp',
+      type: 'bigint',
       nullable: true,
       comment: '注册时间',
     })
     reg_time: number
 
     @Column({
-      type: 'timestamp',
+      type: 'bigint',
       nullable: true,
       comment: '最后登录时间',
     })
     last_login_time: number
+
 }
